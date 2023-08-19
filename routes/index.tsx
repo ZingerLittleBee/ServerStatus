@@ -7,7 +7,7 @@ export default async function Home() {
     const limit = await getLimit()
 
   return (
-    <div className="px-4 py-8 mx-auto h-screen flex flex-col" style="background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);">
+    <div className="px-4 py-8 mx-auto h-full min-h-screen flex flex-col" style="background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);">
       <div className="flex-1 max-w-screen-md mx-auto flex flex-col items-center justify-center">
         <img
           class="my-6"
@@ -17,14 +17,14 @@ export default async function Home() {
           alt="the Fresh logo: a sliced lemon dripping with juice"
         />
         <h1 class="text-4xl font-bold">ServerBee Status</h1>
-        <div className="my-6 grid grid-cols-2 gap-4">
+        <div className="my-6 grid md:grid-cols-2 sm:grid-cols-1 gap-4">
               {
                   CardView({title: "Stable", version: stableVersion, url: stablePageUrl})
               }
               {
                   CardView({title: "Pre-Release", version: preVersion ?? 'No pre-release', url: prePageUrl})
               }
-              <div className="col-span-2">
+              <div className="col-span-full">
                 {
                     SpeedCardView(limit)
                 }
@@ -41,10 +41,10 @@ export default async function Home() {
 
 const CardView = ({title, version, url}) => {
     return (
-        <div className="max-w-sm w-72 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="md:col-span-1 sm:col-span-2 max-w-72 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
             <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">{version}</p>
-            <a href={url} target="_blank" className={`inline-flex items-center text-blue-600 hover:underline select-none ${url ? '' : 'cursor-not-allowed'}`}>
+            <a href={url} target="_blank" className={`inline-flex items-center hover:underline select-none ${url ? 'text-blue-600' : 'cursor-not-allowed text-gray-500'}`}>
                 See release page
                 <svg className="w-3 h-3 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
