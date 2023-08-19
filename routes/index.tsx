@@ -72,8 +72,7 @@ const SpeedCardView = ({ limit, remaining,  used, reset}) => {
                     <dd className="text-gray-500 dark:text-gray-400">Used</dd>
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                    <dt className="mb-2 text-xl font-extrabold">{new Date(reset * 1000).toLocaleDateString()}</dt>
-                    <dt className="mb-2 text-xl font-extrabold">{new Date(reset * 1000).toLocaleTimeString()}</dt>
+                    <dt className="mb-2 text-md font-extrabold">{new Date(reset * 1000).toISOString()}</dt>
                     <dd className="text-gray-500 dark:text-gray-400">Reset</dd>
                 </div>
             </dl>
