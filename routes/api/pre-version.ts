@@ -3,6 +3,7 @@ import {getVersionFromGithub} from "../../utils/versionUtil.ts";
 
 export const handler: Handlers<string | null> = {
     async GET(_req, ctx) {
-        return new Response((await getVersionFromGithub())?.stableVersion);
+        const info  = await getVersionFromGithub()
+        return new Response(info?.preVersion ?? info?.stableVersion);
     },
 };
