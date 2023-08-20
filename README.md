@@ -5,7 +5,11 @@ Serverless status api for ServerBee.
 ## API
 
 ### GET /version
-curl https://status.serverbee.app/version
+> Get the latest release version that excludes pre-release versions.
+
+```bash
+curl https://status.serverbee.app/api/version
+```
 
 response:
 ```bash
@@ -13,7 +17,11 @@ v1.2.6
 ```
 
 ### GET /pre-version
-curl https://status.serverbee.app/pre-version
+> Get the latest release version that includes pre-release versions.
+
+```bash
+curl https://status.serverbee.app/api/pre-version
+```
 
 response:
 ```bash
