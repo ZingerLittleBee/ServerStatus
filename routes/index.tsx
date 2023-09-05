@@ -1,8 +1,17 @@
-import {getLimit, getVersionFromGithub} from "../utils/versionUtil.ts";
+import { getLimit, getVersion } from "../utils/versionUtil.ts";
 
 export default async function Home() {
 
-  const { preVersion, prePageUrl, stablePageUrl, stableVersion } = await getVersionFromGithub()
+    let versionInfo = await getVersion()
+    if (!versionInfo) {
+        versionInfo = {
+            stableVersion: 'Unknown',
+            stablePageUrl: '',
+            preVersion: 'Unknown',
+            prePageUrl: ''
+        }
+    }
+    const { stableVersion, stablePageUrl, preVersion, prePageUrl } = versionInfo
 
     const limit = await getLimit()
 

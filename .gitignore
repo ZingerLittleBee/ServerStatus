@@ -10,3 +10,5 @@ _fresh/
 
 # IDE
 .idea
+.history
+.vscode
